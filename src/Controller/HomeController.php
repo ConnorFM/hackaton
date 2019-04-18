@@ -10,7 +10,6 @@ namespace App\Controller;
 
 class HomeController extends AbstractController
 {
-    public $api;
 
 
     /**
@@ -25,6 +24,4 @@ class HomeController extends AbstractController
     {
         return $this->twig->render('Home/index.html.twig');
     }
-
-
 }
