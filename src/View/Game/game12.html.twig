@@ -1,19 +1,16 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <div class="container">
-      <div class="row justify-content-around">
+    <div class="container-fluid">
+      <ul class="deck">
       {% for i in random12Egg %}
         {% for egg in i%}
-        <div class="card {{ egg.rarity }}" style="width: 15rem; height: 24rem;">
-          <img src="{{ egg.image }}" class="card-img-top w-100" alt="...">
-        <div class="card-body">
+        <li class="card {{ egg.rarity }} w-12">
+          <img src="{{ egg.image }}" class="card-img-top w-80" alt="...">
           <h5 class="card-title text-center">{{ egg.name }}</h5>
-          <p class="card-text text-center">{{ egg. rarity | capitalize }}</p>
-        </div>
-      </div>
+        </li>
       {% endfor %}
     {% endfor %}
-    </div>
+      </ul>
     </div>
 {% endblock %}

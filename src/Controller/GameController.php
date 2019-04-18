@@ -107,7 +107,7 @@ class GameController extends AbstractController
 
         $array1 = [];
         $array2 = [];
-        for ($i=0; $i<=11; $i++) {
+        for ($i=0; $i<=8; $i++) {
             $response = $client->request('GET', 'eggs/random');
             $body = $response->getBody();
             $array1[] = json_decode($body->getContents(), true);
