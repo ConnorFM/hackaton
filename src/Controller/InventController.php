@@ -9,7 +9,7 @@ use App\Model\UserManager;
 class InventController extends AbstractController
 {
 
-    public function inventory($user_id)
+   /* public function inventory($user_id)
     {
         $userManager = new UserManager;
         $userEgg = $userManager->getinventory($user_id);
@@ -27,7 +27,7 @@ class InventController extends AbstractController
             $eggsToShow[] = $egg;
         }
         return $this->twig->render('Inventory/index.html.twig', ['eggs' => $eggsToShow]);
-    }
+    }*/
 
 
     private function getPrice($rarity)
@@ -61,5 +61,4 @@ class InventController extends AbstractController
         }
         return $price;
     }
-
 }
