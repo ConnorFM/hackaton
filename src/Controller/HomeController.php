@@ -10,6 +10,8 @@ namespace App\Controller;
 
 class HomeController extends AbstractController
 {
+    public $api;
+
 
     /**
      * Display home page
@@ -23,4 +25,6 @@ class HomeController extends AbstractController
     {
         return $this->twig->render('Home/index.html.twig');
     }
+
+
 }

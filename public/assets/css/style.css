@@ -1,0 +1,61 @@
+.player
+{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.player h1
+{
+    text-align: center;
+}
+
+.user
+{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.user h2
+{
+    text-align: center;
+}
+
+/* Border des cards par raretée */
+.junk
+{
+    border :2px solid darkgray;
+}
+
+.basic
+{
+    border :2px solid black;
+}
+.fine
+{
+    border :2px solid moccasin;
+}
+
+.masterwork
+{
+    border :2px solid darkred;
+}
+
+.rare
+{
+    border :2px solid dodgerblue;
+}
+
+.exotic
+{
+    border :2px solid limegreen;
+}
+
+.ascended
+{
+    border :2px solid darkmagenta;
+}
+
+.legendary
+{
+    border :2px solid gold;
+}
