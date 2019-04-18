@@ -22,14 +22,14 @@ class UserManager extends \App\Model\AbstractManager
     public function addUser($username, $password)
     {
         $insert = 'INSERT INTO users (username, password)
-        VALUES (:username, :password)';
-
-        $prep = $this->pdo->prepare($insert);
-
+                   VALUES (:username, :password)';
+        $statement = $this->pdo->prepare($insert);
         $prep->bindValue('username', $username, \PDO::PARAM_STR);
         $prep->bindValue('password', $password, \PDO::PARAM_STR);
 
-        $prep->execute();
+        if ($statement->execute()) {
+            return (int)$this->pdo->lastInsertId();
+        }
     }
 
     // recup scores / party / character

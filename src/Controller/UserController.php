@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Model\UserManager;
+use App\Service\Session;
 
 class UserController extends \App\Controller\AbstractController
 {
@@ -14,7 +15,9 @@ class UserController extends \App\Controller\AbstractController
 
             if (empty($error)) {
                 $objetUser = new UserManager('users');
-                $objetUser->addUser($_POST['username'], $_POST['password']);
+                $userId = $objetUser->addUser($_POST['username'], $_POST['password']);
+                Session::createSession($userId);
+
                 return $this->twig->render('Admin/signin.html.twig', ['success'=>'Account saved with success']);
             }
             else {

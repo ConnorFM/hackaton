@@ -6,7 +6,7 @@ namespace App\Service;
 class Session
 {
 
-    public function createSession($id)
+    static function createSession($id)
     {
         $_SESSION['userId'] = $id;
     }
