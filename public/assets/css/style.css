@@ -17,6 +17,9 @@ body
     font-family: 'KG';
     src : url('../font/KG Hippity Hop.ttf');
 
+    font-family: 'EasterEgg';
+    src : url('../font/EasterEgg.ttf');
+
 }
 
 /* Authentification user */
@@ -136,10 +139,10 @@ body
 
 .navbar-brand
 {
-    font-family: "KG";
+    font-family: "EasterEgg";
 
     font-size: 90px;
-    color: black  ;
+    color: #F991D0      ;
 }
 
 .logo_navbar
@@ -149,13 +152,15 @@ body
 
 .navbar
 {
-    background-color: #D2B4DE    ;
+    background-color: #BDF3A2      ;
+    box-shadow: 0px 0px 10px 10px #BDF3A2;
+
 }
 
 .welcome
 {
     text-align: center;
-    color: black;
+
 }
 
 
@@ -176,5 +181,6 @@ body
 .welcome_btn
 {
     margin : auto;
+    color: #F354B5  ;
 }
 
