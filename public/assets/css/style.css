@@ -1,7 +1,31 @@
+body
+{
+    font-family: sans-serif;
+
+    background-image: url("../images/background2.jpg")  ;
+    background-attachment: fixed;
+    color: black;
+}
+
+@font-face {
+    font-family: 'EggyBunnyEar';
+    src : url('../font/Eggy Bunny Ear.ttf');
+
+    font-family: 'EggyBunny';
+    src : url('../font/Eggy Bunny.ttf');
+
+    font-family: 'KG';
+    src : url('../font/KG Hippity Hop.ttf');
+
+}
+
+/* Authentification user */
+
+
 .player
 {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 20px;
+
 }
 
 .player h1
@@ -11,8 +35,8 @@
 
 .user
 {
-    margin-top: 50px;
-    margin-bottom: 50px;
+
+    margin-bottom: 20px;
 
 }
 
@@ -20,6 +44,7 @@
 {
     text-align: center;
 }
+
 
 /* Border des cards par raretée */
 .junk
@@ -60,3 +85,51 @@
 {
     border :2px solid gold;
 }
+
+
+/* Navbar */
+
+.navbar-brand
+{
+    font-family: "KG";
+
+    font-size: 90px;
+    color: black  ;
+}
+
+.logo_navbar
+{
+    padding-right: 50px;
+}
+
+.navbar
+{
+    background-color: #D2B4DE    ;
+}
+
+.welcome
+{
+    text-align: center;
+    color: black;
+}
+
+
+/* Weclome page */
+
+.welcome_text
+{
+    margin-top: 30px;
+    font-size: 25px;
+    font-family: Palatino ;
+}
+
+.welcome_text h2
+{
+    text-align: center;
+}
+
+.welcome_btn
+{
+    margin : auto;
+}
+
