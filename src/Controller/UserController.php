@@ -4,7 +4,7 @@ namespace App\Controller;
 use App\Model\UserManager;
 use App\Service\Session;
 
-class UserController extends \App\Controller\AbstractController
+class UserController extends AbstractController
 {
 
     public function signin()
@@ -14,8 +14,8 @@ class UserController extends \App\Controller\AbstractController
             $error = $this->verify($_POST['username'], $_POST['password']);
 
             if (empty($error)) {
-                $objetUser = new UserManager('users');
-                $userId = $objetUser->addUser($_POST['username'], $_POST['password']);
+                $objetUser = new UserManager();
+                $userId = $objetUser->addUser($_POST['username'], password_hash($_POST['password'], PASSWORD_DEFAULT));
                 Session::createSession($userId);
 
                 return $this->twig->render('Admin/signin.html.twig', ['success'=>'Account saved with success']);
@@ -37,14 +37,12 @@ class UserController extends \App\Controller\AbstractController
             $error = $this->verify($_POST['username'], $_POST['password']);
 
             if (empty($error)) {
-                $objetUser = new UserManager('users');
+                $objetUser = new UserManager();
+                $user = $objetUser->isUserExist($_POST['username']);
 
-                if($_POST['password'] == $_POST['password_conf'])
+                if($user['password'] == password_hash($_POST['password']))
                 {
-
-                    $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-                    $objetUser->addUser($_POST['username'], $_POST['password']);
+                    Session::createSession($userId);
                     return $this->twig->render('Admin/signup.html.twig', ['success' => 'Account saved with success']);
                 }
                 else {

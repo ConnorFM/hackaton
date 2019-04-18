@@ -17,15 +17,13 @@ class UserManager extends \App\Model\AbstractManager
         parent::__construct(self::TABLE);
     }
 
-
-
     public function addUser($username, $password)
     {
         $insert = 'INSERT INTO users (username, password)
                    VALUES (:username, :password)';
         $statement = $this->pdo->prepare($insert);
-        $prep->bindValue('username', $username, \PDO::PARAM_STR);
-        $prep->bindValue('password', $password, \PDO::PARAM_STR);
+        $statement->bindValue('username', $username, \PDO::PARAM_STR);
+        $statement->bindValue('password', $password, \PDO::PARAM_STR);
 
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
@@ -68,5 +66,14 @@ class UserManager extends \App\Model\AbstractManager
                                     WHERE user_id = ".$user_id);
         $listCharacters = $charater-> fetchAll(PDO::FETCH_ASSOC);
         return $listCharacters;
+    }
+
+    public function isUserExist($username) {
+        // prepared request
+        $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE username = :usernamer");
+        $statement->bindValue('username', $username, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
     }
 }
