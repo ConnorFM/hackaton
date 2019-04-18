@@ -8,61 +8,40 @@
         <div id="contenu" class="row">
 
 
-
-            <div class="col-lg-6 user">
-                <div class="container">
-                    <form class="form-group" method="post">
-
-                        <h2>Sign In</h2><br/>
-
-                            <div class="form-group">
-                                <label for="username">Firstname</label>
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
-                                {{ error.firstname }}
-                            </div>
-
-                            <div class="form-group">
-                                <label for="username">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                                {{ error.password }}
-                            </div>
-
-                            <div>
-                                <button type="submit" class="btn btn-primary">Sign in</button>
-                                {{ sucess }}
-                            </div>
-
-                    </form>
-                </div>
-            </div>
-
-            <div class="col-lg-6 user">
+            <div class="col-lg-12 user">
                 <div class="container">
                     <form class="form-group" method="post">
 
                         <h2>Sign Up</h2><br/>
 
                         <div class="form-group">
-                            <label for="username">Firstname</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                             {{ error.firstname }}
                         </div>
 
                         <div class="form-group">
-                            <label for="username">Firstname</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                            {{ error.password }}
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+
                         </div>
 
                         <div class="form-group">
                             <label for="password">Confirm your password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                            <input type="password" class="form-control" id="password_conf" name="password_conf" placeholder="Password" required>
                             {{ error.password }}
                         </div>
 
                         <div>
                             <button type="submit" class="btn btn-primary">Sign up</button>
-                            {{ sucess }}
+                            {{ success }}
+                        </div>
+
+                        <div>
+                            <br/>
+                            <br/>
+                            <p>Please sign in if you have an account</p>
+                            <a href="signin" type="button" class="btn btn-primary">Sign in</a>
                         </div>
 
                     </form>

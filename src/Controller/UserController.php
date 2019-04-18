@@ -5,7 +5,8 @@ use App\Model\UserManager;
 
 class UserController extends \App\Controller\AbstractController
 {
-    public function index()
+
+    public function signin()
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -14,14 +15,53 @@ class UserController extends \App\Controller\AbstractController
             if (empty($error)) {
                 $objetUser = new UserManager('users');
                 $objetUser->addUser($_POST['username'], $_POST['password']);
+<<<<<<< HEAD
                 return $this->twig->render('Admin/signup.html.twig', ['sucess'=>'Account saved with success']);
             } else {
+=======
+                return $this->twig->render('Admin/signin.html.twig', ['success'=>'Account saved with success']);
+            }
+            else {
+                return $this->twig->render('Admin/signin.html.twig', ['error'=>$error]);
+            }
+        }
+        else{
+            return $this->twig->render('Admin/signin.html.twig');
+        }
+    }
+
+
+    public function signup()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $error = $this->verify($_POST['username'], $_POST['password']);
+
+            if (empty($error)) {
+                $objetUser = new UserManager('users');
+
+                if($_POST['password'] == $_POST['password_conf'])
+                {
+
+                    $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+                    $objetUser->addUser($_POST['username'], $_POST['password']);
+                    return $this->twig->render('Admin/signup.html.twig', ['success' => 'Account saved with success']);
+                }
+                else {
+                    return $this->twig->render('Admin/signup.html.twig', ['error'=>$error]);
+                }
+
+            }
+            else {
+>>>>>>> julien
                 return $this->twig->render('Admin/signup.html.twig', ['error'=>$error]);
             }
         } else {
             return $this->twig->render('Admin/signup.html.twig');
         }
     }
+
 
 
     /*vérification des champs d'inscription*/
@@ -49,6 +89,9 @@ class UserController extends \App\Controller\AbstractController
             $error['password'] = 'At least 8 characters are required';
         }
 
+        if ($_POST['password'] != $_POST['password_conf']) {
+            $error['password'] = 'Both passwords are not matching';
+        }
         return $error;
     }
 }
