@@ -15,12 +15,10 @@ class UserController extends \App\Controller\AbstractController
                 $objetUser = new UserManager('users');
                 $objetUser->addUser($_POST['username'], $_POST['password']);
                 return $this->twig->render('Admin/signup.html.twig', ['sucess'=>'Account saved with success']);
-            }
-            else {
+            } else {
                 return $this->twig->render('Admin/signup.html.twig', ['error'=>$error]);
             }
-        }
-        else{
+        } else {
             return $this->twig->render('Admin/signup.html.twig');
         }
     }
