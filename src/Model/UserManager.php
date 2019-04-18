@@ -1,9 +1,23 @@
 <?php
 namespace App\Model;
 
+use \PDO;
+
 class UserManager extends \App\Model\AbstractManager
 {
     // Enregistrement dans la BDD
+
+    const TABLE = 'user';
+
+    /**
+     *  Initializes this class.
+     */
+    public function __construct()
+    {
+        parent::__construct(self::TABLE);
+    }
+
+
 
     public function addUser($username, $password)
     {
@@ -26,13 +40,13 @@ class UserManager extends \App\Model\AbstractManager
                             .$user_id . " AND party_id = ".$party_id. "AND character_id = ".$character_id);
         
         $listScores = $scoreUser->fetchAll(PDO::FETCH_ASSOC);
-        return $selScores;
+        return $listScores;
     }
 
     // list inventories
     public function listInventories($user_id)
     {
-        $inventory = $this->pdo->query("SELECT id, egg_id FROM inventory WHERE user_id = "
+        $inventory = $this->pdo->query("SELECT id, egg_Api FROM inventory WHERE user_id = "
                             .$user_id);
         $listInventories = $inventory-> fetchAll(PDO::FETCH_ASSOC);
         return $listInventories;
@@ -41,7 +55,7 @@ class UserManager extends \App\Model\AbstractManager
     // list characters
     public function listCharacters()
     {
-        $charater = $this->pdo->query("SELECT API_id FROM character WHERE user_id = ".$user_id);
+        $charater = $this->pdo->query("SELECT API_id FROM character");
         $listCharacters = $charater-> fetchAll(PDO::FETCH_ASSOC);
         return $listCharacters;
     }
