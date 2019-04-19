@@ -13,6 +13,7 @@ class Session
 
     public function getUserId()
     {
+        session_start();
         return $_SESSION['userId'];
     }
 }
