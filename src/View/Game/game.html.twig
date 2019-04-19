@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+  <div class="container-fluid">
+    <h2 class="text-center score">Score : {{ score }}</h2>
+    <div class="deck">
+      {% for egg in random12Egg %}
+        <div class="col-2 flip-container " onclick="this.classList.toggle('hover');" >
+          <div class="flipper">
+            <div class="card {{ egg.rarity }} w-12 front" id="{{ egg.id }}" name="{{ i ~ egg.id }}" value = "{{ egg.id }}">
+              <img src="{{ egg.image }}" class="card-img-top card-img-fouc w-80" alt="...">
+              <h5 class="card-title text-center">{{ egg.name }}</h5>
+            </div><form type="submit" method="post"><a class="card w-12 back"></a></form>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

@@ -54,9 +54,7 @@ class InventController extends AbstractController
     public function tradeToGold($rarity, $userEggId)
     {
         $gold = $this->getPrice($rarity);
-        $actualGold = $this->userManager->getGold($_SESSION['userId']);
-        $newGold = $gold+$actualGold[0];
-        $this->userManager->addGold($newGold, $_SESSION['userId']);
+        $this->userManager->addGold($gold, $_SESSION['userId']);
         $this->inventoryManager->deleteEggFromInventory($userEggId, $_SESSION['userId']);
         header('Location: /invent/inventory');
     }

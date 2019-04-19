@@ -6,7 +6,6 @@
  * Time: 16:07
  * PHP version 7
  */
-
 namespace App\Controller;
 
 use App\Model\GameManager;
@@ -32,20 +31,18 @@ class GameController extends AbstractController
             $item['title'] = $_POST['title'];
             $itemManager->update($item);
         }
-
         if(isset($_POST[$this->get9RandomEgg(['id'])]))
         {
             $_SESSION[$this->get9RandomEgg(['id'])] = $_POST[$this->get9RandomEgg(['id'])];
             header('Location:index.php');
         }*/
-        return $this->twig->render('Game/game12.html.twig', [
-                                                            'random12Egg' => $this->get9RandomEgg(),
-                                                            'randomEgg' => $this->getRandomEgg(),
-                                                                'connection_ok' =>$_SESSION["userId"]
-                                                            //'score' => $this->getScore()
+        return $this->twig->render('Game/game.html.twig', [
+            'random12Egg' => $this->get9RandomEgg(),
+            'randomEgg' => $this->getRandomEgg(),
+            'connection_ok' =>$_SESSION["userId"]
+            //'score' => $this->getScore()
         ]);
     }
-
     /**
      * Display 12 random eggs from the API
      *
@@ -54,9 +51,8 @@ class GameController extends AbstractController
     public function get9RandomEgg()
     {
         $client = new Client([
-                'base_uri' => 'http://easteregg.wildcodeschool.fr/api/',
-            ]);
-
+            'base_uri' => 'http://easteregg.wildcodeschool.fr/api/',
+        ]);
         $array1 = [];
         $array2 = [];
         for ($i=0; $i<=8; $i++) {
@@ -69,7 +65,6 @@ class GameController extends AbstractController
         shuffle($array);
         return $array;
     }
-
     /**
      * Display a random egg from the API
      *
@@ -78,14 +73,13 @@ class GameController extends AbstractController
     public function getRandomEgg()
     {
         $client = new Client([
-                'base_uri' => 'http://easteregg.wildcodeschool.fr/api/',
-            ]);
+            'base_uri' => 'http://easteregg.wildcodeschool.fr/api/',
+        ]);
         $response = $client->request('GET', 'eggs/random');
         $body = $response->getBody();
         $array1 = json_decode($body->getContents(), true);
         return $array1;
     }
-
     /*public function getScore()
     {
         $score = 0;
@@ -108,7 +102,6 @@ class GameController extends AbstractController
         } elseif ($rarity1 === 'legendary' && $rarity1 === $rarity2 && $id1 != $id2) {
             $score += 600;
         }
-
         return $score;
     }*/
 }
