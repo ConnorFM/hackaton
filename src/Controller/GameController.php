@@ -28,6 +28,16 @@ class GameController extends AbstractController
      */
     public function index()
     {
+        /*if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $item['title'] = $_POST['title'];
+            $itemManager->update($item);
+        }
+
+        if(isset($_POST[$this->get9RandomEgg(['id'])]))
+        {
+            $_SESSION[$this->get9RandomEgg(['id'])] = $_POST[$this->get9RandomEgg(['id'])];
+            header('Location:index.php');
+        }*/
         return $this->twig->render('Game/game12.html.twig', [
                                                             'random12Egg' => $this->get9RandomEgg(),
                                                             'randomEgg' => $this->getRandomEgg()
@@ -54,8 +64,8 @@ class GameController extends AbstractController
             $array1[] = json_decode($body->getContents(), true);
         }
         $array2 = $array1;
-        shuffle($array1);
-        $array = [$array1, $array2];
+        $array = array_merge($array1, $array2);
+        shuffle($array);
         return $array;
     }
 
@@ -100,4 +110,7 @@ class GameController extends AbstractController
 
         return $score;
     }*/
+
+
+
 }
