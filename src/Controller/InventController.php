@@ -53,7 +53,7 @@ class InventController extends AbstractController
     {
         $gold = $this->getPrice($rarity);
         $actualGold = $this->userManager->getGold($_SESSION['userId']);
-        $newGold = $gold+$actualGold;
+        $newGold = $gold+$actualGold[0];
         $this->userManager->addGold($newGold, $_SESSION['userId']);
         $this->inventoryManager->deleteEggFromInventory($userEggId, $_SESSION['userId']);
         header('Location: /invent/inventory');
