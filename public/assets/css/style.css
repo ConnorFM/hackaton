@@ -166,6 +166,14 @@ body
 
 }
 
+.welcome_user
+{
+
+    font-size: 15px;
+    margin-top: -100px;
+    text-align: right;
+}
+
 
 /* Welcome page */
 
@@ -221,4 +229,5 @@ body
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Bg-easter-eggs.jpg/220px-Bg-easter-eggs.jpg");
   border-radius: 8px;
 }
+
 

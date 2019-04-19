@@ -30,7 +30,8 @@ class GameController extends AbstractController
     {
         return $this->twig->render('Game/game12.html.twig', [
                                                             'random12Egg' => $this->get9RandomEgg(),
-                                                            'randomEgg' => $this->getRandomEgg()
+                                                            'randomEgg' => $this->getRandomEgg(),
+                                                                'connection_ok' =>$_SESSION["userId"]
                                                             //'score' => $this->getScore()
         ]);
     }

@@ -16,11 +16,10 @@ class UserController extends AbstractController
                 $objectUser = new UserManager();
                 $user = $objectUser->isUserExist($_POST['username']);
                 if ($user['password'] == $_POST['password']) {
-                        $session = new Session();
-                        $session->createSession($user['id']);
+                    $_SESSION["userId"]=$user['id'];
                         return $this->twig->render(
                             'Home/index.html.twig',
-                            ['success' => 'You are connected']
+                            ['success' => 'You are connected', 'connection_ok' =>$_SESSION["userId"], ]
                         );
                 } else {
                     $errors['password'] = 'Your passwords are not the same';
@@ -40,10 +39,11 @@ class UserController extends AbstractController
             if (empty($error)) {
                 $objetUser = new UserManager();
                 $user = $objetUser->addUser($_POST['username'], $_POST['password']);
-                $session = new Session();
-                $session->createSession($user['id']);
+                $_SESSION["userId"]=$user['id'];
 
-                return $this->twig->render('Home/index.html.twig', ['success' => 'Account saved with success']);
+
+
+                return $this->twig->render('Home/index.html.twig', ['success' => 'Account saved with success', 'connection_ok' =>$_SESSION["userId"]]);
             } else {
                 return $this->twig->render('Admin/signup.html.twig', ['error' => $error]);
             }
