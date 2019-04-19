@@ -39,8 +39,8 @@ class InventoryManager extends AbstractManager
     public function deleteEggFromInventory($UserEggId, $userId)
     {
         $statement = $this->pdo->prepare("DELETE FROM $this->table 
-                                                    WHERE `user_id` = :UserEggId
-                                                    AND `id` = :userId");
+                                                    WHERE `user_id` = :userId
+                                                    AND `id` = :UserEggId");
         $statement->bindValue('UserEggId', $UserEggId, \PDO::PARAM_INT);
         $statement->bindValue('userId', $userId, \PDO::PARAM_INT);
         $statement->execute();
