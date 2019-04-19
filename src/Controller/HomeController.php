@@ -8,6 +8,10 @@
 
 namespace App\Controller;
 
+use App\Model\UserManager;
+use App\Service\Session;
+use GuzzleHttp\Client;
+
 class HomeController extends AbstractController
 {
 

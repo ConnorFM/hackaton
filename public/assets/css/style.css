@@ -127,7 +127,7 @@ body
 
 
 
-.card-img-top {
+.card-img-fouc {
     max-height: 141px;
     max-width: 141px;
     width: auto;
@@ -220,5 +220,9 @@ body
   transform: rotateY(180deg);
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Bg-easter-eggs.jpg/220px-Bg-easter-eggs.jpg");
   border-radius: 8px;
+}
+
+.backgroundQuentin {
+    background-color: beige;
 }
 

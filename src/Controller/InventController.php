@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Model\InventoryManager;
+use App\Model\UserManager;
 use App\Service\Session;
 use GuzzleHttp\Client;
 
@@ -11,18 +12,19 @@ class InventController extends AbstractController
 {
     protected $session;
     protected $inventoryManager;
+    protected $userManager;
 
     public function __construct()
     {
         parent::__construct();
-        $this->session = new Session();
         $this->inventoryManager = new InventoryManager();
+        $this->userManager = new UserManager();
     }
 
     public function inventory()
     {
 
-        $userEggs = $this->inventoryManager->listInventories($this->session->getUserId());
+        $userEggs = $this->inventoryManager->listInventories($_SESSION['userId']);
 
         $api = new Client([
             'base_uri' => 'http://easteregg.wildcodeschool.fr/api/'
@@ -30,23 +32,29 @@ class InventController extends AbstractController
 
         $eggsToShow = [];
         foreach ($userEggs as $userEgg) {
-            $response = $api->request('GET', "eggs/$userEgg");
+            $apiEggId = $userEgg['egg_Api'];
+            $userEggId = $userEgg['id'];
+            $response = $api->request('GET', "eggs/$apiEggId");
             $body = $response->getBody();
             $egg = json_decode($body->getContents(), true);
             $egg['price'] = $this->getPrice($egg['rarity']);
-            $egg['userEggId'] = $userEgg['id'];
+            $egg['userEggId'] = $userEggId;
             $eggsToShow[] = $egg;
         }
-        return $this->twig->render('Inventory/index.html.twig', ['eggs' => $eggsToShow]);
+        return $this->twig->render(
+            'Inventory/index.html.twig',
+            ['eggs' => $eggsToShow]
+        );
     }
 
-    /*public function tradeToGold($rarity, $eggId)
+    public function tradeToGold($rarity, $userEggId)
     {
         $gold = $this->getPrice($rarity);
-        $this->userManager->addGold($gold, $this->session->getUserId());
-        $this->userManager->deleteEggFromInventory($eggId, $this->session->getUserId());
+        $actualGold = $this->userManager->getGold($_SESSION['userId']);
+        $this->userManager->addGold(($gold + $actualGold), $_SESSION['userId']);
+        $this->inventoryManager->deleteEggFromInventory($userEggId, $_SESSION['userId']);
         header('Location: /invent/inventory');
-    }*/
+    }
 
     public function addToInventory($apiEggId)
     {

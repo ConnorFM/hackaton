@@ -53,8 +53,6 @@ class UserController extends AbstractController
     }
 
 
-
-
     /*vérification des champs d'inscription*/
 
 
