@@ -101,7 +101,7 @@ body
 
 .deck {
 
-    padding: 32px;
+    padding: 12px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
@@ -112,8 +112,6 @@ body
 }
 
 .deck .card {
-    height: 220px;
-    width: 220px;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -134,7 +132,7 @@ body
 }
 
 .score {
-    font-family: "KG" ;
+    font-family: 'EggyBunny' ;
 }
 
 /* Navbar */

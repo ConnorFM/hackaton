@@ -6,7 +6,7 @@
       <div class="deck">
       {% for i in random12Egg %}
         {% for egg in i%}
-        <div class="flip-container" onclick="this.classList.toggle('hover');">
+        <div class="col-2 flip-container" onclick="this.classList.toggle('hover');">
           <div class="flipper">
             <div class="card {{ egg.rarity }} w-12 front" id="{{ egg.id }}">
               <img src="{{ egg.image }}" class="card-img-top w-80" alt="...">
