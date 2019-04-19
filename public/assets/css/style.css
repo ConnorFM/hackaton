@@ -127,7 +127,7 @@ body
 
 
 
-.card-img-top {
+.card-img-fouc {
     max-height: 141px;
     max-width: 141px;
     width: auto;
@@ -164,6 +164,14 @@ body
     text-align: center;
 
 
+}
+
+.welcome_user
+{
+
+    font-size: 15px;
+    margin-top: -100px;
+    text-align: right;
 }
 
 
@@ -226,4 +234,11 @@ body
     border: 2px solid pink;
 
 }
+
+<<<<<<< HEAD
+=======
+.backgroundQuentin {
+    background-color: beige;
+}
+>>>>>>> 8b050e6ef7279e123f0f229ba6525ce33dc88ff7
 

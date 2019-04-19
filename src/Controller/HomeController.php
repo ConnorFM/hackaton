@@ -8,6 +8,10 @@
 
 namespace App\Controller;
 
+use App\Model\UserManager;
+use App\Service\Session;
+use GuzzleHttp\Client;
+
 class HomeController extends AbstractController
 {
 
@@ -21,6 +25,6 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Home/index.html.twig');
+        return $this->twig->render('Home/index.html.twig',['connection_ok' =>$_SESSION["userId"]]);
     }
 }
