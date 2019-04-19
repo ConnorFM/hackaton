@@ -19,12 +19,7 @@ class UserController extends AbstractController
                         $session = new Session();
                         $session->createSession($user['id']);
                         return $this->twig->render(
-                            'Home/index.html.twig',
-                            [
-                                                             'success' => 'You are connected',
-                                                             'session'=>$session->getUserId()
-                                                         ]
-                        );
+                            'Home/index.html.twig', ['success' => 'You are connected', 'session'=>$session->getUserId()]);
                 } else {
                     $errors['password'] = 'erreur de password';
                     return $this->twig->render('Admin/signin.html.twig', ['error' => $errors]);
