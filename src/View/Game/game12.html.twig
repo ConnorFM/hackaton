@@ -2,15 +2,17 @@
 
 {% block content %}
     <div class="container-fluid">
+      <h2 class="text-center score">Score : {{ score }}</h2>
       <ul class="deck">
       {% for i in random12Egg %}
         {% for egg in i%}
-        <li class="card {{ egg.rarity }} w-12">
+        <li class="card {{ egg.rarity }} w-12" id="{{ egg.id }}">
           <img src="{{ egg.image }}" class="card-img-top w-80" alt="...">
           <h5 class="card-title text-center">{{ egg.name }}</h5>
         </li>
       {% endfor %}
     {% endfor %}
       </ul>
+      <div class="row text-center">Score : {{ score }} </div>
     </div>
 {% endblock %}
