@@ -28,15 +28,6 @@ class UserManager extends AbstractManager
         }
     }
 
-
-    // list characters
-    public function listCharacters()
-    {
-        $charater = $this->pdo->query("SELECT API_id FROM character");
-        $listCharacters = $charater-> fetchAll(PDO::FETCH_ASSOC);
-        return $listCharacters;
-    }
-
     // list characters/user
     public function listCharactersUser($user_id)
     {
