@@ -100,7 +100,6 @@ body
 
 
 .deck {
-    min-height: 600px;
 
     padding: 32px;
     border-radius: 10px;
@@ -186,5 +185,40 @@ body
 {
     margin : auto;
     color: #F354B5  ;
+}
+
+
+.flip-container {
+  perspective: 1000px;
+}
+.flip-container.hover .flipper {
+  transform: rotateY(180deg);
+}
+.flip-container,
+.front,
+.back {
+  width: 220px;
+  height: 220px;
+}
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+.back {
+  transform: rotateY(180deg);
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Bg-easter-eggs.jpg/220px-Bg-easter-eggs.jpg");
+  border-radius: 8px;
 }
 

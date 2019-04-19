@@ -3,16 +3,21 @@
 {% block content %}
     <div class="container-fluid">
       <h2 class="text-center score">Score : {{ score }}</h2>
-      <ul class="deck">
+      <div class="deck">
       {% for i in random12Egg %}
         {% for egg in i%}
-        <li class="card {{ egg.rarity }} w-12" id="{{ egg.id }}">
-          <img src="{{ egg.image }}" class="card-img-top w-80" alt="...">
-          <h5 class="card-title text-center">{{ egg.name }}</h5>
-        </li>
+        <div class="flip-container" onclick="this.classList.toggle('hover');">
+          <div class="flipper">
+            <div class="card {{ egg.rarity }} w-12 front" id="{{ egg.id }}">
+              <img src="{{ egg.image }}" class="card-img-top w-80" alt="...">
+              <h5 class="card-title text-center">{{ egg.name }}</h5>
+            </div><div class="back"></div>
+          </div>
+        </div>
       {% endfor %}
     {% endfor %}
-      </ul>
-      <div class="row text-center">Score : {{ score }} </div>
+      </div>
     </div>
 {% endblock %}
+
+

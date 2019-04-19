@@ -22,7 +22,7 @@ class InventController extends AbstractController
     public function inventory()
     {
 
-        $userEggs = $this->userManager->listInventories(1);
+        $userEggs = $this->userManager->listInventories($this->session->getUserId());
 
         $api = new Client([
             'base_uri' => 'http://easteregg.wildcodeschool.fr/api/'
@@ -70,7 +70,7 @@ class InventController extends AbstractController
                 $price = 10;
                 break;
             case 'rare':
-                $price = ['price' => 15];
+                $price = 15;
                 break;
             case 'exotic':
                 $price = 20;
