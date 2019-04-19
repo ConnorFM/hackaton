@@ -45,7 +45,7 @@ class InventController extends AbstractController
         return $this->twig->render(
             'Inventory/index.html.twig',
             ['eggs' => $eggsToShow,
-                'gold' => $gold[0]]
+                'gold' => $gold]
         );
     }
 

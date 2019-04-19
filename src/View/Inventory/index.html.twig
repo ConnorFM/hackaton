@@ -9,7 +9,6 @@
         <p> Gold can be really interesting here, it will allow you to buy new Characters with specials habilities. </p><br>
         <p> You actually have <a href="/shop/index"> {{ gold }} golds</a></span>
 
-
         <div class="row d-flex justify-content-around"">
             {% for egg in eggs %}
                 <div class="card {{ egg.rarity }} col-3 backgroundQuentin">
@@ -17,7 +16,6 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ egg.name }}</h5>
                         <a href="/invent/tradeToGold/{{ egg.rarity }}/{{ egg.userEggId }}" class="btn btn-primary">{{ egg.price }} golds</a>
-
                     </div>
                 </div>
             {% endfor %}
