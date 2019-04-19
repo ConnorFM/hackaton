@@ -3,7 +3,6 @@
 
 namespace App\Controller;
 
-
 use App\Model\UserManager;
 use App\Service\Session;
 
@@ -31,5 +30,5 @@ class ShopController extends AbstractController
             header('Location: index.php');
         } else {
             return $this->twig->render('');
-        }
-    }*/
+        }*/
+}
