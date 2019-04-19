@@ -42,8 +42,7 @@ class UserController extends AbstractController
                 $_SESSION["userId"]=$user['id'];
 
 
-
-                return $this->twig->render('Home/index.html.twig', ['success' => 'Account saved with success', 'connection_ok' =>$_SESSION["userId"]]);
+                return $this->twig->render('Home/index.html.twig', ['success' => 'Account saved with success']);
             } else {
                 return $this->twig->render('Admin/signup.html.twig', ['error' => $error]);
             }
