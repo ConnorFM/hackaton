@@ -32,8 +32,8 @@ class UserManager extends AbstractManager
     // list characters/user
     public function listCharactersUser($user_id)
     {
-        $charater = $this->pdo->query("SELECT API_id FROM userCharacter 
-                                    INNER JOIN character ON character.id = userCharacter.id 
+        $charater = $this->pdo->query("SELECT API_id FROM userCharacter
+                                    INNER JOIN character ON character.id = userCharacter.id
                                     WHERE user_id = ".$user_id);
         $listCharacters = $charater-> fetchAll(PDO::FETCH_ASSOC);
         return $listCharacters;
@@ -51,14 +51,15 @@ class UserManager extends AbstractManager
 
     public function getGold($id)
     {
-        $statement = $this->pdo->prepare("SELECT `gold` FROM $this->table WHERE id = :user_id");
+        $statement = $this->pdo->prepare("SELECT `gold` FROM $this->table WHERE `id` = :user_id");
         $statement->bindValue('user_id', $id, PDO::PARAM_INT);
+        $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
     public function addGold($gold, $userId)
     {
-        $statement = $this->pdo->prepare("UPDATE $this->table 
+        $statement = $this->pdo->prepare("UPDATE $this->table
                                                     SET gold = gold + $gold
                                                     WHERE `id` = :userId");
         $statement->bindValue('userId', $userId, PDO::PARAM_INT);
