@@ -7,6 +7,19 @@ use PDO;
 
 class ScoreManager extends AbstractManager
 {
+
+    /**
+     *
+     */
+    const TABLE = 'score';
+
+    /**
+     *  Initializes this class.
+     */
+    public function __construct()
+    {
+        parent::__construct(self::TABLE);
+    }
     // recup scores / party / character
 
     public function listScoresPartyCharacter($user_id, $party_id, $character_id)

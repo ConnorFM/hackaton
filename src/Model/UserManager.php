@@ -17,11 +17,12 @@ class UserManager extends AbstractManager
 
     public function addUser($username, $password)
     {
-        $insert = "INSERT INTO $this->table (username, password)
-                   VALUES (:username, :password)";
+        $insert = "INSERT INTO $this->table (username, password, gold)
+                   VALUES (:username, :password, :gold)";
         $statement = $this->pdo->prepare($insert);
         $statement->bindValue('username', $username, \PDO::PARAM_STR);
         $statement->bindValue('password', $password, \PDO::PARAM_STR);
+        $statement->bindValue('gold', 0, \PDO::PARAM_INT);
 
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
@@ -46,5 +47,22 @@ class UserManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    public function getGold($id)
+    {
+        $statement = $this->pdo->prepare("SELECT `gold` FROM $this->table WHERE id = :user_id");
+        $statement->bindValue('user_id', $id, PDO::PARAM_STR);
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function addGold($gold, $userId)
+    {
+        $statement = $this->pdo->prepare("UPDATE $this->table 
+                                                    SET gold = :gold
+        WHERE `id` = :userId");
+        $statement->bindValue('gold', $gold, PDO::PARAM_INT);
+        $statement->bindValue('userId', $userId, PDO::PARAM_INT);
+        $statement->execute();
     }
 }

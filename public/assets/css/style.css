@@ -101,7 +101,7 @@ body
 
 .deck {
 
-    padding: 32px;
+    padding: 12px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
@@ -112,8 +112,6 @@ body
 }
 
 .deck .card {
-    height: 220px;
-    width: 220px;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -127,14 +125,14 @@ body
 
 
 
-.card-img-top {
+.card-img-fouc {
     max-height: 141px;
     max-width: 141px;
     width: auto;
 }
 
 .score {
-    font-family: "KG" ;
+    font-family: 'EggyBunny' ;
 }
 
 /* Navbar */
@@ -230,4 +228,10 @@ body
   border-radius: 8px;
 }
 
+<<<<<<< HEAD
+=======
+.backgroundQuentin {
+    background-color: beige;
+}
+>>>>>>> 8b050e6ef7279e123f0f229ba6525ce33dc88ff7
 

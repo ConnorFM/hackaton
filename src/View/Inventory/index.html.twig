@@ -1,16 +1,25 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <div class="row">
-        {% for egg in eggs %}
-            <div class="card {{ egg.rarity }}">
-                <img src="{{ egg.image }}" class="card-img-top" alt="{{ egg.name }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ egg.name }}</h5>
-                    <a href="/invent/tradeToGold/{{ egg.rarity }}/{{ egg.userEggId }}" class="btn btn-primary">{{ egg.price }} golds</a>
 
+    <h3 class="text-center mt-3">Your inventory</h3>
+
+    <div class="container">
+    <p> Here you can trade your eggs against gold.</p><br>
+    <p> Gold can be really interesting here, it will allow you to buy new Characters with specials habilities. </p>
+
+
+        <div class="row d-flex justify-content-around"">
+            {% for egg in eggs %}
+                <div class="card {{ egg.rarity }} col-3 backgroundQuentin">
+                    <img src="{{ egg.image }}" class="card-img-top w-80 alt="{{ egg.name }}">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ egg.name }}</h5>
+                        <a href="/invent/tradeToGold/{{ egg.rarity }}/{{ egg.userEggId }}" class="btn btn-primary">{{ egg.price }} golds</a>
+
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

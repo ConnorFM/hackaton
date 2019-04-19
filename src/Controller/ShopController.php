@@ -8,27 +8,20 @@ use App\Service\Session;
 
 class ShopController extends AbstractController
 {
-   /* protected $session;
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->session = new Session();
-    }
+/*public function buy($charactId, $price)
+{
+    $characterManager = new CharacterManager;
+    $charactList = $characterManager->listOfUnlockCharacter($this->session->getUserId());
 
-    public function buy($charactId, $price)
-    {
-        $characterManager = new CharacterManager;
-        $charactList = $characterManager->listOfUnlockCharacter($this->session->getUserId());
+    $userManager = new UserManager();
+    $gold = $userManager->getGold($this->session->getUserId());
 
-        $userManager = new UserManager();
-        $gold = $userManager->getGold($this->session->getUserId());
-
-        if (!in_array($charactId, $charactList) and $gold >= $price) {
-            $characterManager->addUnlockCharacter($charactId, $this->session->getUserId());
-            $userManager->decreaseGold($price);
-            header('Location: index.php');
-        } else {
-            return $this->twig->render('');
-        }*/
+    if (!in_array($charactId, $charactList) and $gold >= $price) {
+        $characterManager->addUnlockCharacter($charactId, $this->session->getUserId());
+        $userManager->decreaseGold($price);
+        header('Location: index.php');
+    } else {
+        return $this->twig->render('');
+    }*/
 }

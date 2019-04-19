@@ -49,11 +49,11 @@ CREATE TABLE `userCharacter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `user` (username, password)
-VALUES  ("Julien", "Julien"),
-        ("Nathalie", "Nathalie"),
-        ("Fouc", "Fouc"),
-        ("Quentin", "Quentin");
+INSERT INTO `user` (username, password, gold)
+VALUES  ("Julien", "Julien", 0),
+        ("Nathalie", "Nathalie", 0),
+        ("Fouc", "Fouc", 0),
+        ("Quentin", "Quentin", 0);
 
 INSERT INTO `character`(API_id)
 VALUES ("5cac51240d488f0da6151c5e"),
