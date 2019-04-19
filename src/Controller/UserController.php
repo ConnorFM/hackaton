@@ -18,16 +18,12 @@ class UserController extends AbstractController
                 if ($user['password'] == $_POST['password']) {
                         $session = new Session();
                         $session->createSession($user['id']);
-                        var_dump($session->getUserId());
                         return $this->twig->render(
                             'Home/index.html.twig',
-                            [
-                                                             'success' => 'You are connected',
-                                                             'session'=>$session->getUserId()
-                                                         ]
+                            ['success' => 'You are connected']
                         );
                 } else {
-                    $errors['password'] = 'erreur de password';
+                    $errors['password'] = 'Your passwords are not the same';
                     return $this->twig->render('Admin/signin.html.twig', ['error' => $errors]);
                 }
             }

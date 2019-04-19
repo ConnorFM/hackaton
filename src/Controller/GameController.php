@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\GameManager;
+use GuzzleHttp\Client;
 
 /**
  * Class GameManager
@@ -48,8 +49,8 @@ class GameController extends AbstractController
     {
         return $this->twig->render('Game/game12.html.twig', [
                                                             'random12Egg' => $this->get12RandomEgg(),
-                                                            'randomEgg' => $this->getRandomEgg(),
-                                                            'score' => $this->getScore()
+                                                            'randomEgg' => $this->getRandomEgg()
+                                                            //'score' => $this->getScore()
 
         ]);
     }
@@ -102,7 +103,7 @@ class GameController extends AbstractController
      */
     public function get12RandomEgg()
     {
-        $client = new \GuzzleHttp\Client([
+        $client = new Client([
                 'base_uri' => 'http://easteregg.wildcodeschool.fr/api/',
             ]);
 
@@ -126,7 +127,7 @@ class GameController extends AbstractController
      */
     public function get24RandomEgg()
     {
-        $client = new \GuzzleHttp\Client([
+        $client = new Client([
                 'base_uri' => 'http://easteregg.wildcodeschool.fr/api/',
             ]);
 
@@ -150,7 +151,7 @@ class GameController extends AbstractController
      */
     public function getRandomEgg()
     {
-        $client = new \GuzzleHttp\Client([
+        $client = new Client([
                 'base_uri' => 'http://easteregg.wildcodeschool.fr/api/',
             ]);
         $response = $client->request('GET', 'eggs/random');
@@ -160,7 +161,7 @@ class GameController extends AbstractController
     }
 
 
-    public function getScore()
+    /*public function getScore()
     {
         $score = 0;
         if ($id1 === $id2){
@@ -184,6 +185,5 @@ class GameController extends AbstractController
         }
 
         return $score;
-    }
-
+    }*/
 }

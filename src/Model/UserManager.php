@@ -5,8 +5,6 @@ use \PDO;
 
 class UserManager extends AbstractManager
 {
-    // Enregistrement dans la BDD
-
     const TABLE = 'user';
 
     /**
@@ -28,27 +26,6 @@ class UserManager extends AbstractManager
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
         }
-    }
-
-    // recup scores / party / character
-
-    public function listScoresPartyCharacter($user_id, $party_id, $character_id)
-    {
-        $scoreUser = $this->pdo->query("SELECT score FROM score WHERE user_id = "
-                            .$user_id . " AND party_id = ".$party_id. "AND character_id = ".$character_id);
-        
-        $listScores = $scoreUser->fetchAll(PDO::FETCH_ASSOC);
-        return $listScores;
-    }
-
-    // list inventories
-    public function listInventories($userId): array
-    {
-        $statement = $this->pdo->prepare("SELECT 'egg_Api' FROM inventory WHERE 'user_id'= :user_id");
-        $statement->bindValue('user_id', $userId, \PDO::PARAM_INT);
-        $statement->execute();
-
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
 

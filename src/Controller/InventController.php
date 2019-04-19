@@ -3,26 +3,26 @@
 
 namespace App\Controller;
 
+use App\Model\InventoryManager;
 use App\Service\Session;
 use GuzzleHttp\Client;
-use App\Model\UserManager;
 
 class InventController extends AbstractController
 {
     protected $session;
-    protected $userManager;
+    protected $inventoryManager;
 
     public function __construct()
     {
         parent::__construct();
         $this->session = new Session();
-        $this->userManager = new UserManager();
+        $this->inventoryManager = new InventoryManager();
     }
 
     public function inventory()
     {
 
-        $userEggs = $this->userManager->listInventories($this->session->getUserId());
+        $userEggs = $this->inventoryManager->listInventories($this->session->getUserId());
 
         $api = new Client([
             'base_uri' => 'http://easteregg.wildcodeschool.fr/api/'
@@ -46,12 +46,12 @@ class InventController extends AbstractController
         $this->userManager->addGold($gold, $this->session->getUserId());
         $this->userManager->deleteEggFromInventory($eggId, $this->session->getUserId());
         header('Location: /invent/inventory');
-    }
+    }*/
 
     public function addToInventory($apiEggId)
     {
-        $this->userManager->addAnEggToInventory($apiEggId, $this->session->getUserId());
-    }*/
+        $this->inventoryManager->addAnEggToInventory($apiEggId, $this->session->getUserId());
+    }
 
     private function getPrice($rarity)
     {
