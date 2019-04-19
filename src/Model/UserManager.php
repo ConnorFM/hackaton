@@ -60,7 +60,7 @@ class UserManager extends AbstractManager
     {
         $statement = $this->pdo->prepare("UPDATE $this->table 
                                                     SET gold = :gold
-        WHERE `id` = :userId");
+                                                    WHERE `id` = :userId");
         $statement->bindValue('gold', $gold, PDO::PARAM_INT);
         $statement->bindValue('userId', $userId, PDO::PARAM_INT);
         $statement->execute();

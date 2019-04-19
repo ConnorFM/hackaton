@@ -9,7 +9,7 @@ use App\Service\Session;
 class ShopController extends AbstractController
 {
 
-/*public function buy($charactId, $price)
+/*public function index($charactId, $price)
 {
     $characterManager = new CharacterManager;
     $charactList = $characterManager->listOfUnlockCharacter($this->session->getUserId());
