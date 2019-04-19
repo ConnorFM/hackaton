@@ -1,8 +1,14 @@
 <?php
 namespace App\Controller;
 
+
 use App\Model\UserManager;
 use App\Service\Session;
+// Start the session
+
+
+
+
 
 class UserController extends AbstractController
 {
@@ -18,14 +24,10 @@ class UserController extends AbstractController
                 if ($user['password'] == $_POST['password']) {
                         $session = new Session();
                         $session->createSession($user['id']);
-                        return $this->twig->render(
-<<<<<<< HEAD
-                            'Home/index.html.twig', ['success' => 'You are connected', 'session'=>$session->getUserId()]);
-=======
-                            'Home/index.html.twig',
-                            ['success' => 'You are connected']
-                        );
->>>>>>> dev
+                        return $this->twig->render('Home/index.html.twig',['success' => 'You are connected']);
+
+
+
                 } else {
                     $errors['password'] = 'Your passwords are not the same';
                     return $this->twig->render('Admin/signin.html.twig', ['error' => $errors]);
