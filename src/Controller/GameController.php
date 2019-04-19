@@ -110,7 +110,4 @@ class GameController extends AbstractController
 
         return $score;
     }*/
-
-
-
 }
