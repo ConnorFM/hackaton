@@ -41,9 +41,11 @@ class InventController extends AbstractController
             $egg['userEggId'] = $userEggId;
             $eggsToShow[] = $egg;
         }
+        $gold = $this->userManager->getGold($_SESSION['userId']);
         return $this->twig->render(
             'Inventory/index.html.twig',
-            ['eggs' => $eggsToShow]
+            ['eggs' => $eggsToShow,
+                'gold' => $gold]
         );
     }
 
@@ -51,7 +53,8 @@ class InventController extends AbstractController
     {
         $gold = $this->getPrice($rarity);
         $actualGold = $this->userManager->getGold($_SESSION['userId']);
-        $this->userManager->addGold(($gold + $actualGold), $_SESSION['userId']);
+        $newGold = $gold+$actualGold[0];
+        $this->userManager->addGold($newGold, $_SESSION['userId']);
         $this->inventoryManager->deleteEggFromInventory($userEggId, $_SESSION['userId']);
         header('Location: /invent/inventory');
     }

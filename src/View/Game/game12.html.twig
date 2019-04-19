@@ -4,17 +4,19 @@
     <div class="container-fluid">
       <h2 class="text-center score">Score : {{ score }}</h2>
       <div class="deck">
-      {% for i in random12Egg %}
-        {% for egg in i%}
-        <div class="col-2 flip-container" onclick="this.classList.toggle('hover');">
+      {% for egg in random12Egg %}
+        <div class="col-2 flip-container " onclick="this.classList.toggle('hover');" >
           <div class="flipper">
+<<<<<<< HEAD
             <div class="card {{ egg.rarity }} w-12 front" id="{{ egg.id }}">
+=======
+            <div class="card {{ egg.rarity }} w-12 front" id="{{ egg.id }}" name="{{ i ~ egg.id }}" value = "{{ egg.id }}">
+>>>>>>> dev
               <img src="{{ egg.image }}" class="card-img-top card-img-fouc w-80" alt="...">
               <h5 class="card-title text-center">{{ egg.name }}</h5>
-            </div><div class="back"></div>
+            </div><form type="submit" method="post"><a class="card w-12 back"></a></form>
           </div>
         </div>
-      {% endfor %}
     {% endfor %}
       </div>
     </div>

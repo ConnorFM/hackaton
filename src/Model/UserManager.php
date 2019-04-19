@@ -52,16 +52,15 @@ class UserManager extends AbstractManager
     public function getGold($id)
     {
         $statement = $this->pdo->prepare("SELECT `gold` FROM $this->table WHERE id = :user_id");
-        $statement->bindValue('user_id', $id, PDO::PARAM_STR);
+        $statement->bindValue('user_id', $id, PDO::PARAM_INT);
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
     public function addGold($gold, $userId)
     {
         $statement = $this->pdo->prepare("UPDATE $this->table 
-                                                    SET gold = :gold
-        WHERE `id` = :userId");
-        $statement->bindValue('gold', $gold, PDO::PARAM_INT);
+                                                    SET gold = gold + $gold
+                                                    WHERE `id` = :userId");
         $statement->bindValue('userId', $userId, PDO::PARAM_INT);
         $statement->execute();
     }

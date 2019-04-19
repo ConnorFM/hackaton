@@ -103,7 +103,7 @@ body
 
 .deck {
 
-    padding: 12px;
+    padding: 32px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
@@ -113,7 +113,9 @@ body
     margin: 0 0 3em;
 }
 
-.deck .card {
+.deck .front {
+    height: 220px;
+    width: 220px;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -134,7 +136,7 @@ body
 }
 
 .score {
-    font-family: 'EggyBunny' ;
+    font-family: "EasterEgg";
 }
 
 /* Navbar */
@@ -221,15 +223,22 @@ body
   top: 0;
   left: 0;
 }
-.front {
+.back {
   z-index: 2;
   transform: rotateY(0deg);
 }
-.back {
+.front {
   transform: rotateY(180deg);
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Bg-easter-eggs.jpg/220px-Bg-easter-eggs.jpg");
-  border-radius: 8px;
 }
+
+
+.deck .back{
+    background-image: url("/assets/images/220px-easter-eggs.jpg");
+    border-radius: 8px;
+    border: 2px solid pink;
+
+}
+
 
 
 .backgroundQuentin {
