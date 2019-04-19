@@ -9,7 +9,7 @@ use App\Model\UserManager;
 
 class InventController extends AbstractController
 {
-    /*protected $session;
+    protected $session;
     protected $userManager;
 
     public function __construct()
@@ -22,25 +22,25 @@ class InventController extends AbstractController
     public function inventory()
     {
 
-        $userEgg = $this->userManager->listInventories($this->session->getUserId());
+        $userEggs = $this->userManager->listInventories(1);
 
         $api = new Client([
             'base_uri' => 'http://easteregg.wildcodeschool.fr/api/'
         ]);
 
         $eggsToShow = [];
-        for ($i = 0; $i < $userEgg; $i++) {
-            $response = $api->request('GET', 'eggs/' . $userEgg['egg_Api']);
+        foreach ($userEggs as $userEgg) {
+            $response = $api->request('GET', "eggs/$userEgg");
             $body = $response->getBody();
-            $egg = json_decode($body->getContents(), 1);
-            $egg[] = $this->getPrice($egg['rarity']);
-            $egg[] = ['userEggId' => $userEgg[$i]['id']];
+            $egg = json_decode($body->getContents(), true);
+            $egg['price'] = $this->getPrice($egg['rarity']);
+            $egg['userEggId'] = $userEgg['id'];
             $eggsToShow[] = $egg;
         }
         return $this->twig->render('Inventory/index.html.twig', ['eggs' => $eggsToShow]);
     }
 
-    public function tradeToGold($rarity, $eggId)
+    /*public function tradeToGold($rarity, $eggId)
     {
         $gold = $this->getPrice($rarity);
         $this->userManager->addGold($gold, $this->session->getUserId());
@@ -51,37 +51,37 @@ class InventController extends AbstractController
     public function addToInventory($apiEggId)
     {
         $this->userManager->addAnEggToInventory($apiEggId, $this->session->getUserId());
-    }
+    }*/
 
     private function getPrice($rarity)
     {
-        $price = [];
+        $price = "";
         switch ($rarity) {
             case 'junk':
-                $price[] = ['price' => 1];
+                $price = 1;
                 break;
             case 'basic':
-                $price[] = ['price' => 2];
+                $price = 2;
                 break;
             case 'fine':
-                $price[] = ['price' => 5];
+                $price = 5;
                 break;
             case 'masterwork':
-                $price[] = ['price' => 10];
+                $price = 10;
                 break;
             case 'rare':
-                $price[] = ['price' => 15];
+                $price = ['price' => 15];
                 break;
             case 'exotic':
-                $price[] = ['price' => 20];
+                $price = 20;
                 break;
             case 'ascended':
-                $price[] = ['price' => 30];
+                $price = 30;
                 break;
             case 'legendary':
-                $price[] = ['price' => 50];
+                $price = 50;
                 break;
         }
         return $price;
-    }*/
+    }
 }

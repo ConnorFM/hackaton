@@ -5,14 +5,15 @@ namespace App\Service;
 
 class Session
 {
-
-    static function createSession($id)
+    public function createSession($id)
     {
-        $_SESSION['userId'] = $id;
+        session_start();
+        $_Session['userId'] = $id;
     }
 
     public function getUserId()
     {
+        session_start();
         return $_SESSION['userId'];
     }
 }

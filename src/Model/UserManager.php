@@ -3,7 +3,7 @@ namespace App\Model;
 
 use \PDO;
 
-class UserManager extends \App\Model\AbstractManager
+class UserManager extends AbstractManager
 {
     // Enregistrement dans la BDD
 
@@ -19,8 +19,8 @@ class UserManager extends \App\Model\AbstractManager
 
     public function addUser($username, $password)
     {
-        $insert = 'INSERT INTO users (username, password)
-                   VALUES (:username, :password)';
+        $insert = "INSERT INTO $this->table (username, password)
+                   VALUES (:username, :password)";
         $statement = $this->pdo->prepare($insert);
         $statement->bindValue('username', $username, \PDO::PARAM_STR);
         $statement->bindValue('password', $password, \PDO::PARAM_STR);
@@ -42,13 +42,15 @@ class UserManager extends \App\Model\AbstractManager
     }
 
     // list inventories
-    public function listInventories($user_id)
+    public function listInventories($userId): array
     {
-        $inventory = $this->pdo->query("SELECT id, egg_Api FROM inventory WHERE user_id = "
-                            .$user_id);
-        $listInventories = $inventory-> fetchAll(PDO::FETCH_ASSOC);
-        return $listInventories;
+        $statement = $this->pdo->prepare("SELECT 'egg_Api' FROM inventory WHERE 'user_id'= :user_id");
+        $statement->bindValue('user_id', $userId, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     // list characters
     public function listCharacters()
@@ -68,10 +70,11 @@ class UserManager extends \App\Model\AbstractManager
         return $listCharacters;
     }
 
-    public function isUserExist($username) {
+    public function isUserExist($username)
+    {
         // prepared request
-        $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE username = :usernamer");
-        $statement->bindValue('username', $username, \PDO::PARAM_INT);
+        $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE `username` = :username");
+        $statement->bindValue('username', $username, PDO::PARAM_STR);
         $statement->execute();
 
         return $statement->fetch();

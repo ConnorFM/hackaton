@@ -3,7 +3,7 @@
 {% block content %}
     <div class="row">
         {% for egg in eggs %}
-            <div class="card {{ egg.rarity }}" style="width: 18rem;">
+            <div class="card {{ egg.rarity }}">
                 <img src="{{ egg.image }}" class="card-img-top" alt="{{ egg.name }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ egg.name }}</h5>
