@@ -18,6 +18,7 @@ class UserController extends AbstractController
                 if ($user['password'] == $_POST['password']) {
                         $session = new Session();
                         $session->createSession($user['id']);
+                        var_dump($session->getUserId());
                         return $this->twig->render(
                             'Home/index.html.twig',
                             [
