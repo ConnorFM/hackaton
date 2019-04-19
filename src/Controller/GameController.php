@@ -18,8 +18,6 @@ use GuzzleHttp\Client;
  */
 class GameController extends AbstractController
 {
-
-
     /**
      * Display item listing
      *
@@ -28,72 +26,13 @@ class GameController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function game6()
-    {
-        return $this->twig->render('Game/game6.html.twig', [
-                                                            'random6Egg' => $this->get6RandomEgg(),
-                                                            'randomEgg' => $this->getRandomEgg()
-
-        ]);
-    }
-
-    /**
-     * Display item listing
-     *
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
-    public function game12()
+    public function index()
     {
         return $this->twig->render('Game/game12.html.twig', [
-                                                            'random12Egg' => $this->get12RandomEgg(),
+                                                            'random12Egg' => $this->get9RandomEgg(),
                                                             'randomEgg' => $this->getRandomEgg()
                                                             //'score' => $this->getScore()
-
         ]);
-    }
-
-    /**
-     * Display item listing
-     *
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
-    public function game24()
-    {
-        return $this->twig->render('Game/game24.html.twig', [
-                                                            'random24Egg' => $this->get24RandomEgg(),
-                                                            'randomEgg' => $this->getRandomEgg()
-
-        ]);
-    }
-
-    /**
-     * Display 6 random eggs from the API
-     *
-     * @return array
-     */
-    public function get6RandomEgg()
-    {
-        $client = new \GuzzleHttp\Client([
-                'base_uri' => 'http://easteregg.wildcodeschool.fr/api/',
-            ]);
-
-        $array1 = [];
-        $array2 = [];
-        for ($i=0; $i<=5; $i++) {
-            $response = $client->request('GET', 'eggs/random');
-            $body = $response->getBody();
-            $array1[] = json_decode($body->getContents(), true);
-        }
-        $array2 = $array1;
-        shuffle($array1);
-        $array = [$array1, $array2];
-        return $array;
     }
 
     /**
@@ -101,7 +40,7 @@ class GameController extends AbstractController
      *
      * @return array
      */
-    public function get12RandomEgg()
+    public function get9RandomEgg()
     {
         $client = new Client([
                 'base_uri' => 'http://easteregg.wildcodeschool.fr/api/',
@@ -110,30 +49,6 @@ class GameController extends AbstractController
         $array1 = [];
         $array2 = [];
         for ($i=0; $i<=8; $i++) {
-            $response = $client->request('GET', 'eggs/random');
-            $body = $response->getBody();
-            $array1[] = json_decode($body->getContents(), true);
-        }
-        $array2 = $array1;
-        shuffle($array1);
-        $array = [$array1, $array2];
-        return $array;
-    }
-
-    /**
-     * Display 24 random eggs from the API
-     *
-     * @return array
-     */
-    public function get24RandomEgg()
-    {
-        $client = new Client([
-                'base_uri' => 'http://easteregg.wildcodeschool.fr/api/',
-            ]);
-
-        $array1 = [];
-        $array2 = [];
-        for ($i=0; $i<=23; $i++) {
             $response = $client->request('GET', 'eggs/random');
             $body = $response->getBody();
             $array1[] = json_decode($body->getContents(), true);
@@ -159,7 +74,6 @@ class GameController extends AbstractController
         $array1 = json_decode($body->getContents(), true);
         return $array1;
     }
-
 
     /*public function getScore()
     {
