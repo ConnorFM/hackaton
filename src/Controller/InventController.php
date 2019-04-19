@@ -41,7 +41,9 @@ class InventController extends AbstractController
             $egg['userEggId'] = $userEggId;
             $eggsToShow[] = $egg;
         }
+
         $gold = $this->userManager->getGold($_SESSION['userId']);
+
         return $this->twig->render(
             'Inventory/index.html.twig',
             ['eggs' => $eggsToShow,
